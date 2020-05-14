@@ -33,5 +33,5 @@ export default function PostDetails() {
 }
 
 PostDetails.getInitialProps = async ({ store, query }) => {
-	store.dispatch(PostDetailsCreators.getRequest(2));
+	store.dispatch(PostDetailsCreators.getRequest(query.id));
 };
