@@ -7,17 +7,20 @@ import {
   Typography,
 } from '@material-ui/core';
 
-const TodoItem = React.forwardRef(({ todo, ...props }, ref) => (
+const PostComment = React.forwardRef(({ comment, ...props }, ref) => (
   <ListItem ref={ref} {...props} alignItems="flex-start">
     <ListItemAvatar>
       <Avatar />
     </ListItemAvatar>
     <ListItemText
-      primary={todo.title}
+      primary={comment.name}
       secondary={
         <React.Fragment>
           <Typography component={'div'} variant="body2" color="textPrimary">
-            {`Completo: ${todo.completed ? 'Sim' : 'Não'}`}
+            {`Email: ${comment.email}`}
+          </Typography>
+          <Typography component={'div'} variant="body2" color="textPrimary">
+            {`Mensagem: ${comment.body}`}
           </Typography>
         </React.Fragment>
       }
@@ -25,6 +28,6 @@ const TodoItem = React.forwardRef(({ todo, ...props }, ref) => (
   </ListItem>
 ));
 
-TodoItem.displayName = 'TodoItem';
+PostComment.displayName = 'PostComment';
 
-export default TodoItem;
+export default PostComment;

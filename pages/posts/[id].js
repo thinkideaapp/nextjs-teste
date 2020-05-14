@@ -1,12 +1,12 @@
 import React from 'react';
-import { Creators as TodoDetailsCreators } from 'appStore/ducks/todo/details';
+import { Creators as PostDetailsCreators } from 'appStore/ducks/post/details';
 import Layout from 'components/Layout';
 import { useSelector } from 'react-redux';
-import TodoItem from 'components/pages/todo/TodoItem/TodoItem';
+import PostItem from 'components/pages/post/PostItem/PostItem';
 
 export default function Details() {
-  const { data: todoDetailsData, loading } = useSelector(
-    state => state.todo.details
+  const { data: postDetailsData, loading } = useSelector(
+    state => state.post.details
   );
 
   const loadingStyle = {
@@ -18,16 +18,16 @@ export default function Details() {
   };
 
   if (loading) {
-    return <div style={loadingStyle}>Carregando Todo</div>;
+    return <div style={loadingStyle}>Carregando Post</div>;
   }
 
   return (
     <Layout maxWidth={false}>
-      <TodoItem todo={todoDetailsData} />
+      <PostItem post={postDetailsData} />
     </Layout>
   );
 }
 
 Details.getInitialProps = async ({ store, query }) => {
-  store.dispatch(TodoDetailsCreators.getRequest(query.id));
+  store.dispatch(PostDetailsCreators.getRequest(query.id));
 };
